@@ -14,13 +14,12 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
 
     public GraphicsPanel(String name) {
         try {
-            background = ImageIO.read(new File());
+            background = ImageIO.read(new File("src/background.png"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         pressedKeys = new boolean[128];
         addKeyListener(this);
-        addMouseListener(this);
         setFocusable(true);
         requestFocusInWindow();
     }

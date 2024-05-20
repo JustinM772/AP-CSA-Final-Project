@@ -26,7 +26,7 @@ public class WelcomePanel extends JPanel implements ActionListener {
         super.paintComponent(g);
         g.setFont(new Font("Arial", Font.BOLD, 20));
         g.setColor(Color.RED);
-        g.drawString("Please enter your name:", 50, 30);
+        g.drawString("Enter your name:", 50, 30);
         textField.setLocation(50, 50);
         submitButton.setLocation(50, 100);
     }

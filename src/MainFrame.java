@@ -7,7 +7,7 @@ public class MainFrame implements Runnable{
         JFrame frame = new JFrame("Final Project");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(960, 580);
-        panel = new GraphicsPanel();
+        panel = new GraphicsPanel(name);
         frame.add(panel);
         frame.setVisible(true);
         Thread thread = new Thread(this);
