@@ -3,7 +3,7 @@ import javax.swing.*;
 public class MainFrame implements Runnable{
     private GraphicsPanel panel;
 
-    public MainFrame() {
+    public MainFrame(String name) {
         JFrame frame = new JFrame("Final Project");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(960, 580);

@@ -1,22 +1,28 @@
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-public class GraphicsPanel extends JPanel implements KeyListener {
+import java.util.ArrayList;
+public class GraphicsPanel extends JPanel implements KeyListener, ActionListener {
     private BufferedImage background;
     private boolean[] pressedKeys;
     private Player player;
 
 
-    public GraphicsPanel() {
+    public GraphicsPanel(String name) {
         try {
             background = ImageIO.read(new File());
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         pressedKeys = new boolean[128];
+        addKeyListener(this);
+        addMouseListener(this);
+        setFocusable(true);
+        requestFocusInWindow();
     }
 
     @Override
