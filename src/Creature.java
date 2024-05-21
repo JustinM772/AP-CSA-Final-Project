@@ -30,13 +30,21 @@ public class Creature {
     }
     public void move(String direction) {
         if (direction.equals("left")) {
-            xCoord -= 5;
+            if (xCoord - 1 >= -20) {
+                xCoord -= 1;
+            }
         } else if (direction.equals("right")) {
-            xCoord += 5;
+            if (xCoord + 1 <= 890) {
+                xCoord += 1;
+            }
         } else if (direction.equals("up")) {
-            yCoord -= 5;
+            if (yCoord - 1 >= 0) {
+                yCoord -= 1;
+            }
         } else if (direction.equals("down")) {
-            yCoord += 5;
+            if (yCoord + 1 <= 450) {
+                yCoord += 1;
+            }
         }
     }
     public Rectangle creatureRect() {
