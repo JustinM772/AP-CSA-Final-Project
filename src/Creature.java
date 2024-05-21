@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +12,7 @@ public class Creature {
     private int health;
     public Creature(int xCoord, int yCoord) {
         try {
-            img = ImageIO.read(new File("helmetfishPNG.png/src"));
+            img = ImageIO.read(new File("src/helmetfishPNG.png"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -37,5 +38,11 @@ public class Creature {
         } else if (direction.equals("down")) {
             yCoord += 5;
         }
+    }
+    public Rectangle creatureRect() {
+        int height = img.getHeight();
+        int width = img.getWidth();
+        Rectangle r = new Rectangle(xCoord, yCoord, height, width);
+        return r;
     }
 }
