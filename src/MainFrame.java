@@ -3,11 +3,12 @@ import javax.swing.*;
 public class MainFrame implements Runnable{
     private GraphicsPanel panel;
 
-    public MainFrame(String name) {
+    public MainFrame() {
         JFrame frame = new JFrame("Final Project");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(960, 580);
-        panel = new GraphicsPanel(name);
+        frame.setLocationRelativeTo(null);
+        panel = new GraphicsPanel("name");
         frame.add(panel);
         frame.setVisible(true);
         Thread thread = new Thread(this);

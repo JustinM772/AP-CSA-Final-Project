@@ -11,7 +11,7 @@ public class Creature {
     private int health;
     public Creature(int xCoord, int yCoord) {
         try {
-            img = ImageIO.read(new File("helmetfishPNG.png/src"));
+            img = ImageIO.read(new File("src/helmetfishPNG.png"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -29,13 +29,21 @@ public class Creature {
     }
     public void move(String direction) {
         if (direction.equals("left")) {
-            xCoord -= 5;
+            if (xCoord - 1 >= -20) {
+                xCoord -= 1;
+            }
         } else if (direction.equals("right")) {
-            xCoord += 5;
+            if (xCoord + 1 <= 890) {
+                xCoord += 1;
+            }
         } else if (direction.equals("up")) {
-            yCoord -= 5;
+            if (yCoord - 1 >= 0) {
+                yCoord -= 1;
+            }
         } else if (direction.equals("down")) {
-            yCoord += 5;
+            if (yCoord + 1 <= 450) {
+                yCoord += 1;
+            }
         }
     }
 }

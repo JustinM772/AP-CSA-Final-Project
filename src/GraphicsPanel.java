@@ -10,6 +10,9 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
     private BufferedImage background;
     private boolean[] pressedKeys;
     private Player player;
+    private Creature creature;
+    private Timer timer;
+    private int time;
 
 
     public GraphicsPanel(String name) {
@@ -18,28 +21,39 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        player = new Player(0,0);
+        creature = new Creature(0, 400);
         pressedKeys = new boolean[128];
+        time = 0;
+        timer = new Timer(1000,this);
         addKeyListener(this);
         setFocusable(true);
         requestFocusInWindow();
+
+
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.drawImage(background,0,0, null);
+        g.drawImage(player.getImg(), player.getX(), player.getY(), null);
+        g.drawImage(creature.getImg(), creature.getX(), creature.getY(), null);
+        g.setFont(new Font("Arial", Font.BOLD, 30));
+        g.drawString("Score: ", 20, 40);
+        g.drawString("Player Health: " + player.getHealth(), 20, 70);
+        g.drawString("Time: " + time, 20, 100);
         if (pressedKeys[65]) {
-            player.faceLeft();
-            player.moveLeft();
+            player.move("left");
         }
         if (pressedKeys[68]) {
-            player.faceRight();
-            player.moveRight();
+            player.move("right");
         }
         if (pressedKeys[87]) {
-            player.moveUp();
+            player.move("up");
         }
         if (pressedKeys[83]) {
-            player.moveDown();
+            player.move("down");
         }
     }
 
