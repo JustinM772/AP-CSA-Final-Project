@@ -37,19 +37,22 @@ public class Player {
     }
     public void move(String direction) {
         if (direction.equals("left")) {
-            xCoord -= 0.2;
-        } else if (direction.equals("right")) {
-            xCoord += 0.2;
-        } else if (direction.equals("up")) {
-            yCoord -= 0.2;
-        } else if (direction.equals("down")) {
-            yCoord += 0.2;
+            xCoord -= 1;
+        }
+        if (direction.equals("right")) {
+            xCoord += 1;
+        }
+        if (direction.equals("up")) {
+            yCoord -= 1;
+        }
+        if (direction.equals("down")) {
+            yCoord += 1;
         }
     }
     public Rectangle playerRect() {
         int height = img.getHeight();
         int width = img.getWidth();
-        Rectangle r = new Rectangle(xCoord, yCoord, height, width);
+        Rectangle r = new Rectangle((int) xCoord, (int) yCoord, height, width);
         return r;
     }
 }

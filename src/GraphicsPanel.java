@@ -34,7 +34,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background, 0, 0, null);
-        g.drawImage(player.getImg(), player.getX(), player.getY(), null);
+        g.drawImage(player.getImg(), (int) player.getX(), (int) player.getY(), null);
         if (player.getHealth() > 0) {
             for (int i = 0; i < creatures.size(); i++) {
                 g.drawImage(creatures.get(i).getImg(), creatures.get(i).getX(), creatures.get(i).getX(), null);
@@ -57,8 +57,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 player.move("down");
             }
         }
-        g.setFont(new Font("Arial", Font.BOLD, 40));
         g.drawString("Health: " + player.getHealth(), 100, 100);
+        g.drawString("x: " + player.getX(), 300, 100);
     }
 
     public void keyTyped(KeyEvent e) {}
