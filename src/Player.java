@@ -37,16 +37,21 @@ public class Player {
     }
     public void move(String direction) {
         if (direction.equals("left")) {
-            xCoord -= 1;
-        }
-        if (direction.equals("right")) {
-            xCoord += 1;
-        }
-        if (direction.equals("up")) {
-            yCoord -= 1;
-        }
-        if (direction.equals("down")) {
-            yCoord += 1;
+            if (xCoord - 1 >= -20) {
+                xCoord -= 1;
+            }
+        } else if (direction.equals("right")) {
+            if (xCoord + 1 <= 890) {
+                xCoord += 1;
+            }
+        } else if (direction.equals("up")) {
+            if (yCoord - 1 >= 0) {
+                yCoord -= 1;
+            }
+        } else if (direction.equals("down")) {
+            if (yCoord + 1 <= 480) {
+                yCoord += 1;
+            }
         }
     }
     public Rectangle playerRect() {

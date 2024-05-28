@@ -34,10 +34,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background, 0, 0, null);
-        g.drawImage(player.getImg(), (int) player.getX(), (int) player.getY(), null);
+        g.drawImage(player.getImg(), player.getX(), player.getY(), null);
         if (player.getHealth() > 0) {
             for (int i = 0; i < creatures.size(); i++) {
-                g.drawImage(creatures.get(i).getImg(), creatures.get(i).getX(), creatures.get(i).getX(), null);
+                g.drawImage(creatures.get(i).getImg(), creatures.get(i).getX(), creatures.get(i).getY(), null);
                 if (player.playerRect().intersects(creatures.get(i).creatureRect())) {
                     player.setHealth(player.getHealth() + 1);
                     creatures.remove(creatures.get(i));
