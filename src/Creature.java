@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class Creature {
     private BufferedImage img;
-    private int xCoord;
-    private int yCoord;
+    private double xCoord;
+    private double yCoord;
     private int health;
     public Creature(int xCoord, int yCoord) {
         try {
@@ -20,10 +20,10 @@ public class Creature {
         this.yCoord = yCoord;
     }
     public int getX() {
-        return xCoord;
+        return (int)xCoord;
     }
     public int getY() {
-        return yCoord;
+        return (int)yCoord;
     }
     public BufferedImage getImg() {
         return img;
@@ -34,15 +34,15 @@ public class Creature {
                 xCoord -= 1;
             }
         } else if (direction.equals("right")) {
-            if (xCoord + 1 <= 890) {
+            if (xCoord + 1 <= 930) {
                 xCoord += 1;
             }
         } else if (direction.equals("up")) {
-            if (yCoord - 1 >= 0) {
+            if (yCoord - 1 >= -10) {
                 yCoord -= 1;
             }
         } else if (direction.equals("down")) {
-            if (yCoord + 1 <= 450) {
+            if (yCoord + 1 <= 905) {
                 yCoord += 1;
             }
         }
@@ -50,7 +50,6 @@ public class Creature {
     public Rectangle creatureRect() {
         int height = img.getHeight();
         int width = img.getWidth();
-        Rectangle r = new Rectangle(xCoord, yCoord, height, width);
-        return r;
+        return new Rectangle((int)xCoord, (int)yCoord, width, height);
     }
 }

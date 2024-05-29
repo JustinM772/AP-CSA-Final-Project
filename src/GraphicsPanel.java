@@ -57,8 +57,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 player.move("down");
             }
         }
+        g.setFont(new Font("ITALIC", Font.BOLD, 18));
         g.drawString("Health: " + player.getHealth(), 100, 100);
         g.drawString("x: " + player.getX(), 300, 100);
+        g.drawString("Timer: " + time, 500, 100);
     }
 
     public void keyTyped(KeyEvent e) {}
@@ -78,8 +80,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         if (e.getSource() instanceof Timer && time > 0) {
             time--;
             player.setHealth(player.getHealth() - 1);
-            int x = (int) (Math.random() * 701) + 100;
-            int y = (int) (Math.random() * 401) + 100;
+            int x = (int) (Math.random() * 751) + 100;
+            int y = (int) (Math.random() * 801) + 100;
             creatures.add(new Creature(x, y));
         }
     }
