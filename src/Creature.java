@@ -30,20 +30,20 @@ public class Creature {
     }
     public void move(String direction) {
         if (direction.equals("left")) {
-            if (xCoord - 1 >= -20) {
-                xCoord -= 1;
+            if (xCoord - 10 >= -20) {
+                xCoord -= 10;
             }
         } else if (direction.equals("right")) {
-            if (xCoord + 1 <= 890) {
-                xCoord += 1;
+            if (xCoord + 10 <= 890) {
+                xCoord += 10;
             }
         } else if (direction.equals("up")) {
-            if (yCoord - 1 >= 0) {
-                yCoord -= 1;
+            if (yCoord - 10 >= 0) {
+                yCoord -= 10;
             }
         } else if (direction.equals("down")) {
-            if (yCoord + 1 <= 450) {
-                yCoord += 1;
+            if (yCoord + 10 <= 450) {
+                yCoord += 10;
             }
         }
     }
