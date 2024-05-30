@@ -29,20 +29,20 @@ public class Creature {
     }
     public void move(String direction) {
         if (direction.equals("left")) {
-            if (xCoord - 10 >= -20) {
-                xCoord -= 10;
+            if (xCoord - 1 >= -20) {
+                xCoord -= 1;
             }
         } else if (direction.equals("right")) {
-            if (xCoord + 10 <= 890) {
-                xCoord += 10;
+            if (xCoord + 1 <= 950) {
+                xCoord += 1;
             }
         } else if (direction.equals("up")) {
-            if (yCoord - 10 >= 0) {
-                yCoord -= 10;
+            if (yCoord - 1 >= -10) {
+                yCoord -= 1;
             }
         } else if (direction.equals("down")) {
-            if (yCoord + 10 <= 450) {
-                yCoord += 10;
+            if (yCoord + 1 <= 940) {
+                yCoord += 1;
             }
         }
     }

@@ -41,7 +41,7 @@ public class Player {
                 xCoord -= 1;
             }
         } else if (direction.equals("right")) {
-            if (xCoord + 1 <= 930) {
+            if (xCoord + 1 <= 950) {
                 xCoord += 1;
             }
         } else if (direction.equals("up")) {
@@ -49,7 +49,7 @@ public class Player {
                 yCoord -= 1;
             }
         } else if (direction.equals("down")) {
-            if (yCoord + 1 <= 905) {
+            if (yCoord + 1 <= 940) {
                 yCoord += 1;
             }
         }
