@@ -16,8 +16,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
     private ArrayList<Creature> creatures;
     private ArrayList<Enemy> enemies;
     private String enemyDirection;
+    private String restrictedArea;
     private Timer timer;
     private int time = 50;
+    private int num;
 
     public GraphicsPanel(String name) {
         try {
@@ -41,6 +43,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background, 0, 0, null);
+        g.setFont(new Font("Arial", BOLD, 20));
         if (player.getHealth() > 0) {
             g.drawImage(player.getImg(), player.getX(), player.getY(), null);
             for (int i = 0; i < creatures.size(); i++) {
@@ -53,7 +56,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
             }
             for (int i = 0; i < enemies.size(); i++) {
                 g.drawImage(enemies.get(i).getImg(), enemies.get(i).getX(), enemies.get(i).getY(), null);
-
+                if (player.playerRect().intersects(enemies.get(i).enemyRect())) {
+                    player.setHealth(player.getHealth() - 20);
+                    enemies.remove(enemies.get(i));
+                    i--;
+                }
             }
             for (int i = 0; i < enemies.size(); i++) {
                 enemies.get(i).move(enemyDirection);
@@ -77,12 +84,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 player.move("down");
             }
             if (time <= 30 && time > 10) {
-                g.drawString("Cannot stay in left half anymore", 800, 100);
+                g.drawString("Cannot stay in " + restrictedArea + " half anymore", 800, 100);
             }
             if (time <= 10 && time > -10) {
                 g.drawString("Cannot stay in right half anymore", 800, 100);
             }
-            g.setFont(new Font("Arial", BOLD, 20));
             g.drawString("Health: " + player.getHealth(), 100, 100);
         }
         if (player.getHealth() <= 0) {
@@ -98,7 +104,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         pressedKeys[key] = true;
     }
 
-
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         pressedKeys[key] = false;
@@ -111,16 +116,58 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
             int x = (int) (Math.random() * 701) + 100;
             int y = (int) (Math.random() * 401) + 100;
             creatures.add(new Creature(x, y));
+            if (time == 30) {
+                num = (int) (Math.random() * 4) + 1;
+            }
+            if (time == 10) {
+                num = (int) (Math.random() * 4) + 1;
+            }
             if (time <= 30 && time > 10) {
-                if (player.getX() <= 480) {
-                    player.setHealth(player.getHealth() - 20);
+                if (num == 1) {
+                    if (player.getX() <= 480) {
+                        player.setHealth(player.getHealth() - 20);
+                        restrictedArea = "left";
+                    }
+                } else if (num == 2) {
+                    if (player.getX() > 480) {
+                        player.setHealth(player.getHealth() - 20);
+                        restrictedArea = "right";
+                    }
+                } else if (num == 3) {
+                    if (player.getY() <= 480) {
+                        player.setHealth(player.getHealth() - 20);
+                        restrictedArea = "top";
+                    }
+                } else if (num == 4) {
+                    if (player.getY() > 480) {
+                        player.setHealth(player.getHealth() - 20);
+                        restrictedArea = "bottom";
+                    }
                 }
             } else if (time <= 10 && time > -10) {
-                if (player.getX() > 480) {
-                    player.setHealth(player.getHealth() - 20);
+                if (num == 1) {
+                    if (player.getX() <= 480) {
+                        player.setHealth(player.getHealth() - 20);
+                        restrictedArea = "left";
+                    }
+                } else if (num == 2) {
+                    if (player.getX() > 480) {
+                        player.setHealth(player.getHealth() - 20);
+                        restrictedArea = "right";
+                    }
+                } else if (num == 3) {
+                    if (player.getY() <= 480) {
+                        player.setHealth(player.getHealth() - 20);
+                        restrictedArea = "top";
+                    }
+                } else if (num == 4) {
+                    if (player.getY() > 480) {
+                        player.setHealth(player.getHealth() - 20);
+                        restrictedArea = "bottom";
+                    }
                 }
             }
-            if (time % 7 == 0 && time < 40) {
+            if (time % 8 == 0 && time < 40) {
                 int a = (int) (Math.random() * 701) + 100;
                 int b = (int) (Math.random() * 401) + 100;
                 enemies.add(new Enemy(a, b));

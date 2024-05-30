@@ -9,7 +9,6 @@ public class Creature {
     private BufferedImage img;
     private int xCoord;
     private int yCoord;
-    private int health;
     public Creature(int xCoord, int yCoord) {
         try {
             img = ImageIO.read(new File("src/helmetfishPNG.png"));

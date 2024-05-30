@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -35,5 +36,10 @@ public class Enemy {
         } else if (direction.equals("down") && y + 1 <= 480) {
             y += 1;
         }
+    }
+    public Rectangle enemyRect() {
+        int height = img.getHeight();
+        int width = img.getWidth();
+        return new Rectangle(x, y, height, width);
     }
 }
