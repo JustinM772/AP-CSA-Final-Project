@@ -90,6 +90,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 g.drawString("Cannot stay in right half anymore", 800, 100);
             }
             g.drawString("Health: " + player.getHealth(), 100, 100);
+            g.drawString("Time: " + time, 500, 100);
         }
         if (player.getHealth() <= 0) {
             g.setFont(new Font("Arial", BOLD, 25));
@@ -118,6 +119,15 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
             creatures.add(new Creature(x, y));
             if (time == 30) {
                 num = (int) (Math.random() * 4) + 1;
+            }
+            if (num == 1) {
+                restrictedArea = "left";
+            } else if (num == 2) {
+                restrictedArea = "right";
+            } else if (num == 3) {
+                restrictedArea = "top";
+            } else if (num == 4) {
+                restrictedArea = "bottom";
             }
             if (time == 10) {
                 num = (int) (Math.random() * 4) + 1;
