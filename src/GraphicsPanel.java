@@ -114,8 +114,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         if (e.getSource() instanceof Timer && time > 0) {
             time--;
             player.setHealth(player.getHealth() - 1);
-            int x = (int) (Math.random() * 701) + 100;
-            int y = (int) (Math.random() * 401) + 100;
+            int x = (int) (Math.random() * 801) + 100;
+            int y = (int) (Math.random() * 801) + 100;
             creatures.add(new Creature(x, y));
             if (time == 30) {
                 num = (int) (Math.random() * 4) + 1;
@@ -178,8 +178,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 }
             }
             if (time % 8 == 0 && time < 40) {
-                int a = (int) (Math.random() * 701) + 100;
-                int b = (int) (Math.random() * 401) + 100;
+                int a = (int) (Math.random() * 801) + 100;
+                int b = (int) (Math.random() * 801) + 100;
                 enemies.add(new Enemy(a, b));
             }
         }
