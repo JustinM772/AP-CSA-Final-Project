@@ -44,7 +44,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         super.paintComponent(g);
         g.drawImage(background, 0, 0, null);
         g.setFont(new Font("Arial", BOLD, 20));
-        if (player.getHealth() > 0) {
+        if (player.getHealth() > 0 && time > 0) {
             g.drawImage(player.getImg(), player.getX(), player.getY(), null);
             for (int i = 0; i < creatures.size(); i++) {
                 g.drawImage(creatures.get(i).getImg(), creatures.get(i).getX(), creatures.get(i).getY(), null);
@@ -99,7 +99,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         if (time == 0 && player.getHealth() >= 0) {
             g.setFont(new Font("Arial", BOLD, 25));
             g.drawString("You win!", 450, 270);
-            setFocusable(false);
         }
     }
 
