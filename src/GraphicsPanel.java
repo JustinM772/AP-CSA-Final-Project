@@ -15,11 +15,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
     private Player player;
     private ArrayList<Creature> creatures;
     private ArrayList<Enemy> enemies;
-    private String enemyDirection;
     private String restrictedArea;
     private Timer timer;
     private int time = 50;
     private int num;
+    private ArrayList<String> directions;
 
     public GraphicsPanel(String name) {
         try {
@@ -34,7 +34,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         player = new Player(400, 400);
         creatures = new ArrayList<>();
         enemies = new ArrayList<>();
-        enemyDirection = "left";
+        directions = new ArrayList<>();
         timer = new Timer(1000, this);
         timer.start();
     }
@@ -63,11 +63,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 }
             }
             for (int i = 0; i < enemies.size(); i++) {
-                enemies.get(i).move(enemyDirection);
+                enemies.get(i).move(directions.get(i));
                 if (enemies.get(i).getX() - 1 <= -20) {
-                    enemyDirection = "right";
-                } else if (enemies.get(i).getX() + 1 > 890) {
-                    enemyDirection = "left";
+                    directions.set(i, "right");
+                } else if (enemies.get(i).getX() + 1 > 960) {
+                    directions.set(i, "left");
                 }
             }
 
@@ -87,7 +87,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 g.drawString("Cannot stay in " + restrictedArea + " half anymore", 800, 100);
             }
             if (time <= 10 && time > -10) {
-                g.drawString("Cannot stay in right half anymore", 800, 100);
+                g.drawString("Cannot stay in " + restrictedArea + " half anymore", 800, 100);
             }
             g.drawString("Health: " + player.getHealth(), 100, 100);
             g.drawString("Time: " + time, 500, 100);
@@ -178,9 +178,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 }
             }
             if (time % 8 == 0 && time < 40) {
-                int a = (int) (Math.random() * 801) + 100;
-                int b = (int) (Math.random() * 801) + 100;
+                int a = (int) (Math.random() * 901) + 100;
+                int b = (int) (Math.random() * 901) + 100;
                 enemies.add(new Enemy(a, b));
+                directions.add("left");
             }
         }
     }

@@ -29,7 +29,7 @@ public class Enemy {
     public void move(String direction) {
         if (direction.equals("left") && x - 1 >= -20) {
             x -= 1;
-        } else if (direction.equals("right") && x + 1 <= 890) {
+        } else if (direction.equals("right") && x + 1 <= 960) {
             x += 1;
         } else if (direction.equals("up") && y - 1 >= 0) {
             y -= 1;
