@@ -84,10 +84,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 player.move("down");
             }
             if (time <= 30 && time > 10) {
-                g.drawString("Cannot stay in " + restrictedArea + " half anymore", 800, 100);
+                g.drawString("Cannot stay in " + restrictedArea + " half anymore", 675, 100);
             }
             if (time <= 10 && time > -10) {
-                g.drawString("Cannot stay in right half anymore", 800, 100);
+                g.drawString("Cannot stay in right half anymore", 675, 100);
             }
             g.drawString("Health: " + player.getHealth(), 100, 100);
             g.drawString("Time: " + time, 500, 100);
