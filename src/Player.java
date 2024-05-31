@@ -18,7 +18,7 @@ public class Player {
         }
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-        health = 100;
+        health = 1000000000;
     }
     public int getX() {
         return (int)xCoord;
