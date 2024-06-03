@@ -28,13 +28,36 @@ public class Enemy {
     }
     public void move(String direction) {
         if (direction.equals("left") && x - 1 >= -20) {
-            x -= 1;
+            x--;
         } else if (direction.equals("right") && x + 1 <= 960) {
-            x += 1;
+            x++;
         } else if (direction.equals("up") && y - 1 >= 0) {
-            y -= 1;
+            y--;
         } else if (direction.equals("down") && y + 1 <= 890) {
-            y += 1;
+            y++;
+        }
+    }
+    public void follow(int playerX, int playerY) {
+        if (playerX < x && playerY < y) {
+            x--;
+            y--;
+        } else if (playerX < x && playerY == y) {
+            x--;
+        } else if (playerX < x && playerY > y) {
+            x--;
+            y++;
+        } else if (playerX == x && playerY < y) {
+            y--;
+        } else if (playerX == x && playerY > y) {
+            y++;
+        } else if (playerX > x && playerY < y) {
+            x++;
+            y--;
+        } else if (playerX > x && playerY == y) {
+            x++;
+        } else if (playerX > x && playerY > y) {
+            x++;
+            y++;
         }
     }
     public Rectangle enemyRect() {

@@ -31,6 +31,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         addKeyListener(this);
         setFocusable(true);
         requestFocusInWindow();
+        restrictedArea = "None";
         player = new Player(400, 400);
         creatures = new ArrayList<>();
         enemies = new ArrayList<>();
@@ -43,7 +44,21 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background, 0, 0, null);
-        g.setFont(new Font("Arial", BOLD, 20));
+        g.setFont(new Font("Arial", BOLD, 19));
+        g.drawRect(150, 75, player.getHealth(), 25);
+        g.drawLine(150, 75, 250, 75);
+        g.drawLine(250, 75, 250, 100);
+        g.drawLine(250, 100, 150, 100);
+        g.drawLine(150, 100, 150, 75);
+        g.setColor(Color.GREEN);
+        g.fillRect(150, 75, player.getHealth(), 25);
+        g.setColor(Color.BLACK);
+        g.drawRect(750, 75, 150, 75);
+        g.fillRect(750, 75, 150, 75);
+        g.setColor(Color.WHITE);
+        g.drawString("Restricted Area: ", 750, 95);
+        g.setColor(Color.RED);
+        g.drawString(restrictedArea, 804, 125);
         if (player.getHealth() > 0 && time > 0) {
             g.drawImage(player.getImg(), player.getX(), player.getY(), null);
             for (int i = 0; i < creatures.size(); i++) {
@@ -63,11 +78,15 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 }
             }
             for (int i = 0; i < enemies.size(); i++) {
-                enemies.get(i).move(directions.get(i));
-                if (enemies.get(i).getX() - 1 <= -20) {
-                    directions.set(i, "right");
-                } else if (enemies.get(i).getX() + 1 > 960) {
-                    directions.set(i, "left");
+                if (i == 0) {
+                    enemies.get(i).follow(player.getX(), player.getY());
+                } else {
+                    enemies.get(i).move(directions.get(i));
+                    if (enemies.get(i).getX() - 1 <= -20) {
+                        directions.set(i, "right");
+                    } else if (enemies.get(i).getX() + 1 > 960) {
+                        directions.set(i, "left");
+                    }
                 }
             }
 
@@ -83,22 +102,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
             if (pressedKeys[83]) {
                 player.move("down");
             }
-            if (time <= 30 && time > 10) {
-                g.drawString("Cannot stay in " + restrictedArea + " half anymore", 650, 100);
-            }
-            if (time <= 10 && time > -10) {
-                g.drawString("Cannot stay in " + restrictedArea + " half anymore", 650, 100);
-            }
-            g.drawString("Health: " + player.getHealth(), 100, 100);
             g.drawString("Time: " + time, 500, 100);
         }
         if (player.getHealth() <= 0) {
             g.setFont(new Font("Arial", BOLD, 25));
             g.drawString("You died", 450, 270);
-        }
-        if (time == 0 && player.getHealth() >= 0) {
-            g.setFont(new Font("Arial", BOLD, 25));
-            g.drawString("You win!", 450, 270);
         }
     }
 
@@ -125,13 +133,13 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 num = (int) (Math.random() * 4) + 1;
             }
             if (num == 1) {
-                restrictedArea = "left";
+                restrictedArea = "LEFT";
             } else if (num == 2) {
-                restrictedArea = "right";
+                restrictedArea = "RIGHT";
             } else if (num == 3) {
-                restrictedArea = "top";
+                restrictedArea = "TOP";
             } else if (num == 4) {
-                restrictedArea = "bottom";
+                restrictedArea = "BOTTOM";
             }
             if (time == 10) {
                 num = (int) (Math.random() * 4) + 1;
@@ -140,44 +148,44 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 if (num == 1) {
                     if (player.getX() <= 480) {
                         player.setHealth(player.getHealth() - 20);
-                        restrictedArea = "left";
+                        restrictedArea = "LEFT";
                     }
                 } else if (num == 2) {
                     if (player.getX() > 480) {
                         player.setHealth(player.getHealth() - 20);
-                        restrictedArea = "right";
+                        restrictedArea = "RIGHT";
                     }
                 } else if (num == 3) {
                     if (player.getY() <= 480) {
                         player.setHealth(player.getHealth() - 20);
-                        restrictedArea = "top";
+                        restrictedArea = "TOP";
                     }
                 } else if (num == 4) {
                     if (player.getY() > 480) {
                         player.setHealth(player.getHealth() - 20);
-                        restrictedArea = "bottom";
+                        restrictedArea = "BOTTOM";
                     }
                 }
             } else if (time <= 10 && time > -10) {
                 if (num == 1) {
                     if (player.getX() <= 480) {
                         player.setHealth(player.getHealth() - 20);
-                        restrictedArea = "left";
+                        restrictedArea = "LEFT";
                     }
                 } else if (num == 2) {
                     if (player.getX() > 480) {
                         player.setHealth(player.getHealth() - 20);
-                        restrictedArea = "right";
+                        restrictedArea = "RIGHT";
                     }
                 } else if (num == 3) {
                     if (player.getY() <= 480) {
                         player.setHealth(player.getHealth() - 20);
-                        restrictedArea = "top";
+                        restrictedArea = "TOP";
                     }
                 } else if (num == 4) {
                     if (player.getY() > 480) {
                         player.setHealth(player.getHealth() - 20);
-                        restrictedArea = "bottom";
+                        restrictedArea = "BOTTOM";
                     }
                 }
             }
