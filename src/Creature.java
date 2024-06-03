@@ -49,7 +49,7 @@ public class Creature {
     public Rectangle creatureRect() {
         int height = img.getHeight();
         int width = img.getWidth();
-        Rectangle r = new Rectangle(xCoord, yCoord, height, width);
+        Rectangle r = new Rectangle(xCoord, yCoord, width, height);
         return r;
     }
 }
