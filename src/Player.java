@@ -12,7 +12,7 @@ public class Player {
     private int health;
     public Player(int xCoord, int yCoord) {
         try {
-            img = ImageIO.read(new File("src/Cactus Man.png"));
+            img = ImageIO.read(new File("src/cat_5-removebg-preview.png"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -43,15 +43,15 @@ public class Player {
     }
     public void move(String direction) {
         if (direction.equals("left")) {
-            if (xCoord - 1 >= -20) {
+            if (xCoord - 1 >= 0) {
                 xCoord -= 2;
             }
         } else if (direction.equals("right")) {
-            if (xCoord + 1 <= 950) {
+            if (xCoord + 1 <= 940) {
                 xCoord += 2;
             }
         } else if (direction.equals("up")) {
-            if (yCoord - 1 >= -10) {
+            if (yCoord - 1 >= 0) {
                 yCoord -= 2;
             }
         } else if (direction.equals("down")) {
