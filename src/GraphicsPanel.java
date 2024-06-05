@@ -18,7 +18,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
     private String restrictedArea;
     private Timer timer;
     private int time = 50;
-    private int num;
+    private int restrictedAreaNum;
     private ArrayList<String> directions;
 
     public GraphicsPanel(String name) {
@@ -123,6 +123,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 creatures = new ArrayList<>();
                 enemies = new ArrayList<>();
                 directions = new ArrayList<>();
+                restrictedAreaNum = 0;
             }
         } else if (player.getHealth() <= 0) {
             g.setFont(new Font("Arial", BOLD, 25));
@@ -150,59 +151,59 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
             int y = (int) (Math.random() * 801) + 100;
             creatures.add(new Creature(x, y));
             if (time == 30) {
-                num = (int) (Math.random() * 4) + 1;
+                restrictedAreaNum = (int) (Math.random() * 4) + 1;
             }
-            if (num == 1) {
+            if (restrictedAreaNum == 1) {
                 restrictedArea = "LEFT";
-            } else if (num == 2) {
+            } else if (restrictedAreaNum == 2) {
                 restrictedArea = "RIGHT";
-            } else if (num == 3) {
+            } else if (restrictedAreaNum == 3) {
                 restrictedArea = "TOP";
-            } else if (num == 4) {
+            } else if (restrictedAreaNum == 4) {
                 restrictedArea = "BOTTOM";
             }
             if (time == 10) {
-                num = (int) (Math.random() * 4) + 1;
+                restrictedAreaNum = (int) (Math.random() * 4) + 1;
             }
             if (time <= 30 && time > 10) {
-                if (num == 1) {
+                if (restrictedAreaNum == 1) {
                     if (player.getX() <= 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "LEFT";
                     }
-                } else if (num == 2) {
+                } else if (restrictedAreaNum == 2) {
                     if (player.getX() > 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "RIGHT";
                     }
-                } else if (num == 3) {
+                } else if (restrictedAreaNum == 3) {
                     if (player.getY() <= 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "TOP";
                     }
-                } else if (num == 4) {
+                } else if (restrictedAreaNum == 4) {
                     if (player.getY() > 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "BOTTOM";
                     }
                 }
             } else if (time <= 10 && time > -10) {
-                if (num == 1) {
+                if (restrictedAreaNum == 1) {
                     if (player.getX() <= 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "LEFT";
                     }
-                } else if (num == 2) {
+                } else if (restrictedAreaNum == 2) {
                     if (player.getX() > 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "RIGHT";
                     }
-                } else if (num == 3) {
+                } else if (restrictedAreaNum == 3) {
                     if (player.getY() <= 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "TOP";
                     }
-                } else if (num == 4) {
+                } else if (restrictedAreaNum == 4) {
                     if (player.getY() > 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "BOTTOM";
