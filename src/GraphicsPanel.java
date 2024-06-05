@@ -56,6 +56,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         g.drawRect(750, 75, 150, 75);
         g.fillRect(750, 75, 150, 75);
         g.setColor(Color.WHITE);
+        g.drawString( "Health", 75, 100);
         g.drawString("Restricted Area: ", 750, 95);
         g.setColor(Color.RED);
         g.drawString(restrictedArea, 804, 125);
