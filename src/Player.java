@@ -26,6 +26,12 @@ public class Player {
     public int getY() {
         return (int)yCoord;
     }
+    public void setX(int newX) {
+        xCoord = newX;
+    }
+    public void setY(int newY) {
+        yCoord = newY;
+    }
     public BufferedImage getImg() {
         return img;
     }

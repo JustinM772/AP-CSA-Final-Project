@@ -102,11 +102,27 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
             if (pressedKeys[83]) {
                 player.move("down");
             }
+            if (restrictedArea.equals("LEFT") || restrictedArea.equals("RIGHT")) {
+                g.drawLine(500, 0, 500, 1000);
+            }
+            if (restrictedArea.equals("TOP") || restrictedArea.equals("BOTTOM")) {
+                g.drawLine(0, 500, 1000, 500);
+            }
             g.drawString("Time: " + time, 500, 100);
         }
         if (player.getHealth() <= 0) {
             g.setFont(new Font("Arial", BOLD, 25));
             g.drawString("You died", 450, 270);
+            if (pressedKeys[32]) {
+                restrictedArea = "None";
+                player.setX(400);
+                player.setY(400);
+                player.setHealth(100);
+                time = 50;
+                creatures = new ArrayList<>();
+                enemies = new ArrayList<>();
+                directions = new ArrayList<>();
+            }
         }
     }
 
@@ -146,44 +162,44 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
             }
             if (time <= 30 && time > 10) {
                 if (num == 1) {
-                    if (player.getX() <= 480) {
+                    if (player.getX() <= 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "LEFT";
                     }
                 } else if (num == 2) {
-                    if (player.getX() > 480) {
+                    if (player.getX() > 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "RIGHT";
                     }
                 } else if (num == 3) {
-                    if (player.getY() <= 480) {
+                    if (player.getY() <= 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "TOP";
                     }
                 } else if (num == 4) {
-                    if (player.getY() > 480) {
+                    if (player.getY() > 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "BOTTOM";
                     }
                 }
             } else if (time <= 10 && time > -10) {
                 if (num == 1) {
-                    if (player.getX() <= 480) {
+                    if (player.getX() <= 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "LEFT";
                     }
                 } else if (num == 2) {
-                    if (player.getX() > 480) {
+                    if (player.getX() > 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "RIGHT";
                     }
                 } else if (num == 3) {
-                    if (player.getY() <= 480) {
+                    if (player.getY() <= 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "TOP";
                     }
                 } else if (num == 4) {
-                    if (player.getY() > 480) {
+                    if (player.getY() > 500) {
                         player.setHealth(player.getHealth() - 20);
                         restrictedArea = "BOTTOM";
                     }
