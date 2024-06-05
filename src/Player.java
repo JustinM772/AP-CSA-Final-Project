@@ -12,7 +12,7 @@ public class Player {
     private int health;
     public Player(int xCoord, int yCoord) {
         try {
-            img = ImageIO.read(new File("src/Cactus Man.png"));
+            img = ImageIO.read(new File("src/cat_5-removebg-preview.png"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

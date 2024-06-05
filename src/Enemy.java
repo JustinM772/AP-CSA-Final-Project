@@ -10,7 +10,7 @@ public class Enemy {
     private BufferedImage img;
     public Enemy(int x, int y) {
         try {
-            img = ImageIO.read(new File("src/lobsterPNG.png"));
+            img = ImageIO.read(new File("src/samson-sprite_0-removebg-preview.png"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
