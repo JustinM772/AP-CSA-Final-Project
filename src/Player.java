@@ -37,15 +37,15 @@ public class Player {
     }
     public void move(String direction) {
         if (direction.equals("left")) {
-            if (xCoord - 1 >= -20) {
+            if (xCoord - 1 >= 0) {
                 xCoord -= 2;
             }
         } else if (direction.equals("right")) {
-            if (xCoord + 1 <= 950) {
+            if (xCoord + 1 <= 940) {
                 xCoord += 2;
             }
         } else if (direction.equals("up")) {
-            if (yCoord - 1 >= -10) {
+            if (yCoord - 1 >= 0) {
                 yCoord -= 2;
             }
         } else if (direction.equals("down")) {

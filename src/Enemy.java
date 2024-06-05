@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class Enemy {
-    private int x;
-    private int y;
+    private double x;
+    private double y;
     private BufferedImage img;
     public Enemy(int x, int y) {
         try {
@@ -18,10 +18,10 @@ public class Enemy {
         this.y = y;
     }
     public int getX() {
-        return x;
+        return (int) x;
     }
     public int getY() {
-        return y;
+        return (int) y;
     }
     public BufferedImage getImg() {
         return img;
@@ -39,30 +39,30 @@ public class Enemy {
     }
     public void follow(int playerX, int playerY) {
         if (playerX < x && playerY < y) {
-            x--;
-            y--;
+            x-= 0.25;
+            y-= 0.25;
         } else if (playerX < x && playerY == y) {
-            x--;
+            x-= 0.25;
         } else if (playerX < x && playerY > y) {
-            x--;
-            y++;
+            x-= 0.25;
+            y+= 0.25;
         } else if (playerX == x && playerY < y) {
-            y--;
+            y-= 0.25;
         } else if (playerX == x && playerY > y) {
-            y++;
+            y+= 0.25;
         } else if (playerX > x && playerY < y) {
-            x++;
-            y--;
+            x+= 0.25;
+            y-= 0.25;
         } else if (playerX > x && playerY == y) {
-            x++;
+            x+= 0.25;
         } else if (playerX > x && playerY > y) {
-            x++;
-            y++;
+            x+= 0.25;
+            y+= 0.25;
         }
     }
     public Rectangle enemyRect() {
         int height = img.getHeight();
         int width = img.getWidth();
-        return new Rectangle(x, y, height, width);
+        return new Rectangle((int)x, (int)y, height, width);
     }
 }
