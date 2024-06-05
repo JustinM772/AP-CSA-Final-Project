@@ -108,6 +108,9 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         if (player.getHealth() <= 0) {
             g.setFont(new Font("Arial", BOLD, 25));
             g.drawString("You died", 450, 270);
+        } else if(time <= 0&& player.getHealth() > 0) {
+            g.setFont(new Font("Arial", BOLD, 25));
+            g.drawString("You win!", 450, 270);
         }
     }
 
