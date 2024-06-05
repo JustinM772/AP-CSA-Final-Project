@@ -11,7 +11,7 @@ public class Creature {
     private int yCoord;
     public Creature(int xCoord, int yCoord) {
         try {
-            img = ImageIO.read(new File("src/helmetfishPNG.png"));
+            img = ImageIO.read(new File("src/canned_fish_small-removebg-preview.png"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
