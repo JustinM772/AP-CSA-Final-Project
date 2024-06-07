@@ -125,9 +125,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 directions = new ArrayList<>();
                 restrictedAreaNum = 0;
             }
-        } else if (player.getHealth() <= 0) {
-            g.setFont(new Font("Arial", BOLD, 25));
-            g.drawString("You win!", 450, 270);
         }
     }
 
