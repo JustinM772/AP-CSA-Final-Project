@@ -39,25 +39,25 @@ public class Enemy {
     }
     public void follow(int playerX, int playerY) {
         if (playerX < x && playerY < y) {
-            x-= 0.25;
-            y-= 0.25;
+            x-= 0.5;
+            y-= 0.5;
         } else if (playerX < x && playerY == y) {
-            x-= 0.25;
+            x-= 0.5;
         } else if (playerX < x && playerY > y) {
-            x-= 0.25;
-            y+= 0.25;
+            x-= 0.5;
+            y+= 0.5;
         } else if (playerX == x && playerY < y) {
-            y-= 0.25;
+            y-= 0.5;
         } else if (playerX == x && playerY > y) {
-            y+= 0.25;
+            y+= 0.5;
         } else if (playerX > x && playerY < y) {
-            x+= 0.25;
-            y-= 0.25;
+            x+= 0.5;
+            y-= 0.5;
         } else if (playerX > x && playerY == y) {
-            x+= 0.25;
+            x+= 0.5;
         } else if (playerX > x && playerY > y) {
-            x+= 0.25;
-            y+= 0.25;
+            x+= 0.5;
+            y+= 0.5;
         }
     }
     public Rectangle enemyRect() {
