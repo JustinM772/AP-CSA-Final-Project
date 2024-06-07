@@ -60,7 +60,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         g.drawString("Restricted Area: ", 750, 95);
         g.setColor(Color.RED);
         g.drawString(restrictedArea, 804, 125);
-        if (player.getHealth() > 0 && time > 0) {
+        if (player.getHealth() > 0 && time > -10000) {
             g.drawImage(player.getImg(), player.getX(), player.getY(), null);
             for (int i = 0; i < creatures.size(); i++) {
                 g.drawImage(creatures.get(i).getImg(), creatures.get(i).getX(), creatures.get(i).getY(), null);
@@ -90,7 +90,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                     }
                 }
             }
-
             if (pressedKeys[65]) {
                 player.move("left");
             }
@@ -141,7 +140,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() instanceof Timer && time > 0) {
+        if (e.getSource() instanceof Timer && time > -10000) {
             time--;
             player.setHealth(player.getHealth() - 1);
             int x = (int) (Math.random() * 801) + 100;
@@ -206,6 +205,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                         restrictedArea = "BOTTOM";
                     }
                 }
+            } else if (time < 10) {
+                restrictedArea = "None";
             }
             if (time % 8 == 0 && time < 40) {
                 int a = (int) (Math.random() * 901) + 100;

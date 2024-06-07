@@ -31,38 +31,34 @@ public class Enemy {
             x--;
         } else if (direction.equals("right") && x + 1 <= 960) {
             x++;
-        } else if (direction.equals("up") && y - 1 >= 0) {
-            y--;
-        } else if (direction.equals("down") && y + 1 <= 890) {
-            y++;
         }
     }
     public void follow(int playerX, int playerY) {
         if (playerX < x && playerY < y) {
-            x-= 0.25;
-            y-= 0.25;
+            x-= 0.3;
+            y-= 0.3;
         } else if (playerX < x && playerY == y) {
-            x-= 0.25;
+            x-= 0.3;
         } else if (playerX < x && playerY > y) {
-            x-= 0.25;
-            y+= 0.25;
+            x-= 0.3;
+            y+= 0.3;
         } else if (playerX == x && playerY < y) {
-            y-= 0.25;
+            y-= 0.3;
         } else if (playerX == x && playerY > y) {
-            y+= 0.25;
+            y+= 0.3;
         } else if (playerX > x && playerY < y) {
-            x+= 0.25;
-            y-= 0.25;
+            x+= 0.3;
+            y-= 0.3;
         } else if (playerX > x && playerY == y) {
-            x+= 0.25;
+            x+= 0.3;
         } else if (playerX > x && playerY > y) {
-            x+= 0.25;
-            y+= 0.25;
+            x+= 0.3;
+            y+= 0.3;
         }
     }
     public Rectangle enemyRect() {
         int height = img.getHeight();
         int width = img.getWidth();
-        return new Rectangle((int)x, (int)y, height, width);
+        return new Rectangle((int) x, (int) y, height, width);
     }
 }
