@@ -114,6 +114,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         if (player.getHealth() <= 0) {
             g.setFont(new Font("Arial", BOLD, 25));
             g.drawString("You died", 450, 270);
+            g.drawString("Press space to retry", 400,  300);
             if (pressedKeys[32]) {
                 restrictedArea = "None";
                 player.setX(400);
@@ -125,6 +126,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
                 directions = new ArrayList<>();
                 restrictedAreaNum = 0;
             }
+        } else if (player.getHealth() > 0 && time == 0){
+            g.setFont(new Font("Arial", BOLD, 25));
+            g.drawString("You survived", 450, 270);
+            g.drawString("Press space to retry", 400,  300);
         }
     }
 
