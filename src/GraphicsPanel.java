@@ -146,7 +146,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
             int x = (int) (Math.random() * 801) + 100;
             int y = (int) (Math.random() * 801) + 100;
             creatures.add(new Creature(x, y));
-            if (time == 30) {
+            if (time == 35) {
                 restrictedAreaNum = (int) (Math.random() * 4) + 1;
             }
             if (restrictedAreaNum == 1) {
