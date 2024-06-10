@@ -158,7 +158,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
             } else if (restrictedAreaNum == 4) {
                 restrictedArea = "BOTTOM";
             }
-            if (time == 10) {
+            if (time == 15) {
                 restrictedAreaNum = (int) (Math.random() * 4) + 1;
             }
             if (time <= 30 && time > 10) {
