@@ -45,21 +45,21 @@ public class GraphicsPanel extends JPanel implements KeyListener, ActionListener
         super.paintComponent(g);
         g.drawImage(background, 0, 0, null);
         g.setFont(new Font("Arial", BOLD, 19));
-        g.drawRect(150, 75, player.getHealth(), 25);
-        g.drawLine(150, 75, 250, 75);
-        g.drawLine(250, 75, 250, 100);
-        g.drawLine(250, 100, 150, 100);
-        g.drawLine(150, 100, 150, 75);
+        g.drawRect(750, 75, player.getHealth(), 25);
+        g.drawLine(750, 75, 850, 75);
+        g.drawLine(850, 75, 850, 100);
+        g.drawLine(850, 100, 750, 100);
+        g.drawLine(750, 100, 750, 75);
         g.setColor(Color.GREEN);
-        g.fillRect(150, 75, player.getHealth(), 25);
+        g.fillRect(750, 75, player.getHealth(), 25);
         g.setColor(Color.BLACK);
-        g.drawRect(750, 75, 150, 75);
-        g.fillRect(750, 75, 150, 75);
+        g.drawRect(150, 75, 150, 75);
+        g.fillRect(150, 75, 150, 75);
         g.setColor(Color.WHITE);
-        g.drawString( "Health", 75, 100);
-        g.drawString("Restricted Area: ", 750, 95);
+        g.drawString( "Health", 675, 100);
+        g.drawString("Restricted Area: ", 150, 95);
         g.setColor(Color.RED);
-        g.drawString(restrictedArea, 804, 125);
+        g.drawString(restrictedArea, 204, 125);
         if (player.getHealth() > 0 && time > -10000) {
             g.drawImage(player.getImg(), player.getX(), player.getY(), null);
             for (int i = 0; i < creatures.size(); i++) {
